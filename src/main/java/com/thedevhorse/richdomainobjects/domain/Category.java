@@ -1,7 +1,5 @@
 package com.thedevhorse.richdomainobjects.domain;
 
-import java.util.Arrays;
-
 public enum Category {
 
     ELITE(20, 35),
@@ -16,10 +14,11 @@ public enum Category {
     private final int minAge;
     private final int maxAge;
 
-    public static Category getCategoryFromAge(int age){
-        return Arrays.stream(values())
-                .filter(category -> age >= category.minAge && age <= category.maxAge)
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Category not found for the age: " + age));
+    public int minAge() {
+        return minAge;
+    }
+
+    public int maxAge() {
+        return maxAge;
     }
 }

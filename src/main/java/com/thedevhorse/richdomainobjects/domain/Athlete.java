@@ -1,5 +1,7 @@
 package com.thedevhorse.richdomainobjects.domain;
 
+import java.util.Arrays;
+
 public class Athlete {
 
     private String name;
@@ -14,11 +16,27 @@ public class Athlete {
         setCategory(age);
     }
 
-    public static Athlete create(String name, int age){
+    public static Athlete create(String name, int age) {
         return new Athlete(name, age);
     }
 
+    public void changeCategory(Category category) {
+        if (!isValidCategory(category)) {
+            throw new IllegalArgumentException("Category not found");
+        }
+
+        this.category = category;
+    }
+
+    private boolean isValidCategory(Category category) {
+        return Arrays.asList(Category.values())
+                .contains(category);
+    }
+
     private void setCategory(int age) {
-        this.category =  Category.getCategoryFromAge(age);
+        this.category = Arrays.stream(Category.values())
+                .filter(c -> age >= c.minAge() && age <= c.maxAge())
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Category not found for the age: " + age));
     }
 }
