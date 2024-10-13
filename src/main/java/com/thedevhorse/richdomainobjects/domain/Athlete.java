@@ -20,18 +20,23 @@ public class Athlete {
         return new Athlete(name, age);
     }
 
-    public void changeCategory(Category category) {
-        if (!isValidCategory(category)) {
-            throw new IllegalArgumentException("Category not found");
-        }
-
-        this.category = category;
+    public String name() {
+        return name;
     }
 
-    private boolean isValidCategory(Category category) {
-        return Arrays.asList(Category.values())
-                .contains(category);
+    public int age() {
+        return age;
     }
+
+    public Category category() {
+        return category;
+    }
+
+    public Athlete changeCategory(int age) {
+        setCategory(age);
+        return this;
+    }
+
 
     private void setCategory(int age) {
         this.category = Arrays.stream(Category.values())
