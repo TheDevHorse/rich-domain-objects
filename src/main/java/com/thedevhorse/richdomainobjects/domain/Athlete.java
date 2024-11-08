@@ -13,7 +13,7 @@ public class Athlete {
     private Athlete(String name, int age) {
         this.name = name;
         this.age = age;
-        setCategory(age);
+        setCategory(this.age);
     }
 
     public static Athlete create(String name, int age) {

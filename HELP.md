@@ -12,6 +12,7 @@ public class Athlete {
     private String name;
     private int age;
     private Category category;
+}
 ```
 **Attributes:** The class has three main attributes: name, age, and category. The category is determined based on the athlete’s age, encapsulating an essential business rule that categorizes athletes by age range.
 
@@ -61,9 +62,10 @@ The Category enumeration defines the possible categories for an athlete, along w
 
 ```java
 public enum Category {
-    ELITE(20, 35),
-    JUNIOR(15, 20),
-    MASTER(35, 100);
+    ELITE(20, 34),
+    JUNIOR(15, 19),
+    MASTER(35, 100)
+}
 ```
 **Enumeration Values:** Each category (ELITE, JUNIOR, MASTER) has a defined minimum and maximum age range. For example, the ELITE category is for athletes between the ages of 20 and 35.
 
@@ -78,7 +80,6 @@ public enum Category {
 
     public int minAge() { return minAge; }
     public int maxAge() { return maxAge; }
-}
 ```
 
 ## Summary and Conclusion

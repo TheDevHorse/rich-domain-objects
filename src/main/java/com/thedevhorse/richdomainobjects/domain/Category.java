@@ -2,8 +2,8 @@ package com.thedevhorse.richdomainobjects.domain;
 
 public enum Category {
 
-    ELITE(20, 35),
-    JUNIOR(15, 20),
+    ELITE(20, 34),
+    JUNIOR(15, 19),
     MASTER(35, 100);
 
     Category(int minAge, int maxAge) {
