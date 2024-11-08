@@ -32,9 +32,7 @@ class AthleteTest {
         String expectedMessage = "Category not found for the age: 5";
 
         //when
-        String actualMessage = assertThrows(IllegalArgumentException.class, () -> {
-            Athlete.create("Horse", 5);
-        }).getMessage();
+        String actualMessage = assertThrows(IllegalArgumentException.class, () -> Athlete.create("Horse", 5)).getMessage();
 
         //then
         Assertions.assertEquals(expectedMessage, actualMessage);
@@ -43,14 +41,26 @@ class AthleteTest {
     @Test
     void givenNewAge_whenChangeCategoryIsCalled_thenCategoryIsChanged() {
         //given
-        Athlete athlete = Athlete.create("Horse", 25);
+        Athlete actual = Athlete.create("Horse", 25);
         Category expected = Category.MASTER;
         int newAge = 37;
 
         //when
-        Athlete actual = athlete.changeCategory(newAge);
+        actual.changeCategory(newAge);
 
         //then
         Assertions.assertEquals(expected, actual.category());
+    }
+
+    @Test
+    void givenNegativeAge_whenCreateAthleteIsCalled_thenIllegalArgumentExceptionThrown() {
+        //given
+        String expectedMessage = "Age must be a positive number.";
+
+        //when
+        String actualMessage = assertThrows(IllegalArgumentException.class, () -> Athlete.create("Horse", -5)).getMessage();
+
+        //then
+        Assertions.assertEquals(expectedMessage, actualMessage);
     }
 }

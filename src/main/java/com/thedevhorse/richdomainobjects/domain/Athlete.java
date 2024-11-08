@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Athlete {
 
-    private String name;
+    private final String name;
 
     private int age;
 
@@ -12,8 +12,8 @@ public class Athlete {
 
     private Athlete(String name, int age) {
         this.name = name;
-        setCategory(age);
         setAge(age);
+        setCategory(age);
     }
 
     public static Athlete create(String name, int age) {
@@ -32,12 +32,11 @@ public class Athlete {
         return category;
     }
 
-    public Athlete changeCategory(int age) {
+    public void changeCategory(int age) {
+        setAge(age);
         setCategory(age);
-        return this;
     }
 
-    //TODO create a test and add to help
     private void setAge(int age) {
         if (age <= 0) {
             throw new IllegalArgumentException("Age must be a positive number.");
