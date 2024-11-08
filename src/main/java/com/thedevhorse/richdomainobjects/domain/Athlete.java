@@ -12,8 +12,8 @@ public class Athlete {
 
     private Athlete(String name, int age) {
         this.name = name;
-        this.age = age;
-        setCategory(this.age);
+        setCategory(age);
+        setAge(age);
     }
 
     public static Athlete create(String name, int age) {
@@ -37,6 +37,13 @@ public class Athlete {
         return this;
     }
 
+    //TODO create a test and add to help
+    private void setAge(int age) {
+        if (age <= 0) {
+            throw new IllegalArgumentException("Age must be a positive number.");
+        }
+        this.age = age;
+    }
 
     private void setCategory(int age) {
         this.category = Arrays.stream(Category.values())
